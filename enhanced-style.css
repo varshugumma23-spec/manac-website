@@ -2750,7 +2750,15 @@ input:checked + .slider:before {
 /* Advanced Navigation Animations */
 .header {
     position: relative;
-    overflow: hidden;
+    overflow: visible;
+}
+
+.header-fixed {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    overflow: visible;
 }
 
 .header::before {
