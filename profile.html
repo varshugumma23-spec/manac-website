@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile - Manac Infotech</title>
+    <link rel="stylesheet" href="enhanced-style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <h1><a href="index.html" style="text-decoration:none;color:inherit;">Manac Infotech</a></h1>
+                    <span>Excellence in IT Education</span>
+                </div>
+                <nav class="nav">
+                    <a href="index.html">Home</a>
+                    <a href="courses.html">Courses</a>
+                    <a href="projects.html">Projects</a>
+                    <a href="index.html#contact">Contact</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="profile-page">
+        <div class="container">
+            <div class="profile-header">
+                <h1>My Profile</h1>
+                <p>Manage your account information and preferences</p>
+            </div>
+            
+            <div class="profile-content">
+                <div class="profile-sidebar">
+                    <div class="profile-card">
+                        <div class="profile-avatar-large">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <h3 id="profileName">Loading...</h3>
+                        <p id="profileEmail">Loading...</p>
+                        <span class="profile-badge">Student</span>
+                    </div>
+                    
+                    <nav class="profile-nav">
+                        <a href="#" class="nav-item active">
+                            <i class="fas fa-user"></i> Personal Info
+                        </a>
+                        <a href="my-courses.html" class="nav-item">
+                            <i class="fas fa-book"></i> My Courses
+                        </a>
+                        <a href="settings.html" class="nav-item">
+                            <i class="fas fa-cog"></i> Settings
+                        </a>
+                    </nav>
+                </div>
+                
+                <div class="profile-main">
+                    <div class="profile-section">
+                        <h2>Personal Information</h2>
+                        <form class="profile-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Full Name</label>
+                                    <input type="text" id="fullName" placeholder="Enter your full name">
+                                </div>
+                                <div class="form-group">
+                                    <label>Email Address</label>
+                                    <input type="email" id="email" placeholder="Enter your email" readonly>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Phone Number</label>
+                                    <input type="tel" id="phone" placeholder="Enter your phone number">
+                                </div>
+                                <div class="form-group">
+                                    <label>Course Interest</label>
+                                    <select id="interest">
+                                        <option value="">Select Interest</option>
+                                        <option value="java">Java Full Stack</option>
+                                        <option value="python">Python & Data Science</option>
+                                        <option value="web">Web Development</option>
+                                        <option value="cloud">Cloud Computing</option>
+                                        <option value="testing">Automation Testing</option>
+                                        <option value="powerbi">Power BI & Analytics</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Update Profile</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Load user data
+        window.addEventListener('load', () => {
+            const userData = localStorage.getItem('manacUserData');
+            const userEmail = localStorage.getItem('manacUser');
+            
+            if (userData) {
+                const data = JSON.parse(userData);
+                document.getElementById('profileName').textContent = data.name || 'User';
+                document.getElementById('profileEmail').textContent = data.email || userEmail;
+                document.getElementById('fullName').value = data.name || '';
+                document.getElementById('email').value = data.email || userEmail;
+                document.getElementById('phone').value = data.phone || '';
+                document.getElementById('interest').value = data.interest || '';
+            } else if (userEmail) {
+                document.getElementById('profileName').textContent = userEmail.split('@')[0];
+                document.getElementById('profileEmail').textContent = userEmail;
+                document.getElementById('email').value = userEmail;
+            }
+        });
+        
+        // Handle form submission
+        document.querySelector('.profile-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const userData = {
+                name: document.getElementById('fullName').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                interest: document.getElementById('interest').value
+            };
+            localStorage.setItem('manacUserData', JSON.stringify(userData));
+            alert('Profile updated successfully!');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Courses - Manac Infotech</title>
+    <link rel="stylesheet" href="enhanced-style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <h1><a href="index.html" style="text-decoration:none;color:inherit;">Manac Infotech</a></h1>
+                    <span>Excellence in IT Education</span>
+                </div>
+                <nav class="nav">
+                    <a href="index.html">Home</a>
+                    <a href="courses.html">All Courses</a>
+                    <a href="profile.html">Profile</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="my-courses-page">
+        <div class="container">
+            <div class="page-header">
+                <h1>My Courses</h1>
+                <p>Track your learning progress and access course materials</p>
+            </div>
+
+            <div class="courses-dashboard">
+                <div class="dashboard-stats">
+                    <div class="stat-card">
+                        <i class="fas fa-book"></i>
+                        <div>
+                            <h3 id="totalCourses">0</h3>
+                            <p>Enrolled Courses</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h3 id="totalHours">0</h3>
+                            <p>Hours Completed</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-certificate"></i>
+                        <div>
+                            <h3 id="certificates">0</h3>
+                            <p>Certificates</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="enrolled-courses" id="enrolledCourses">
+                    <div class="no-courses" id="noCourses">
+                        <i class="fas fa-book-open"></i>
+                        <h3>No Courses Enrolled</h3>
+                        <p>Start your learning journey by enrolling in our courses</p>
+                        <a href="courses.html" class="btn btn-primary">Browse Courses</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const courseData = {
+            java: {
+                name: 'Java Full Stack Development',
+                duration: '6 Months',
+                progress: 65,
+                icon: 'fab fa-java',
+                modules: 12,
+                completed: 8
+            },
+            python: {
+                name: 'Python & Data Science',
+                duration: '5 Months',
+                progress: 40,
+                icon: 'fab fa-python',
+                modules: 10,
+                completed: 4
+            },
+            web: {
+                name: 'Web Development (MERN)',
+                duration: '4 Months',
+                progress: 80,
+                icon: 'fas fa-code',
+                modules: 8,
+                completed: 6
+            },
+            cloud: {
+                name: 'Cloud Computing (AWS)',
+                duration: '3 Months',
+                progress: 25,
+                icon: 'fas fa-cloud',
+                modules: 6,
+                completed: 2
+            },
+            testing: {
+                name: 'Automation Testing',
+                duration: '3 Months',
+                progress: 90,
+                icon: 'fas fa-robot',
+                modules: 6,
+                completed: 5
+            },
+            powerbi: {
+                name: 'Power BI & Analytics',
+                duration: '2 Months',
+                progress: 100,
+                icon: 'fas fa-chart-bar',
+                modules: 4,
+                completed: 4
+            }
+        };
+
+        window.addEventListener('load', () => {
+            const enrolledCourses = JSON.parse(localStorage.getItem('enrolledCourses') || '[]');
+            const coursesContainer = document.getElementById('enrolledCourses');
+            const noCourses = document.getElementById('noCourses');
+
+            if (enrolledCourses.length === 0) {
+                noCourses.style.display = 'block';
+                return;
+            }
+
+            noCourses.style.display = 'none';
+            document.getElementById('totalCourses').textContent = enrolledCourses.length;
+
+            let totalHours = 0;
+            let certificates = 0;
+
+            enrolledCourses.forEach(courseId => {
+                const course = courseData[courseId];
+                if (!course) return;
+
+                totalHours += Math.floor(course.progress * 2.5);
+                if (course.progress === 100) certificates++;
+
+                const courseCard = document.createElement('div');
+                courseCard.className = 'my-course-card';
+                courseCard.innerHTML = `
+                    <div class="course-header">
+                        <div class="course-icon">
+                            <i class="${course.icon}"></i>
+                        </div>
+                        <div class="course-info">
+                            <h3>${course.name}</h3>
+                            <p>${course.duration} • ${course.completed}/${course.modules} modules completed</p>
+                        </div>
+                        <div class="course-progress-text">${course.progress}%</div>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: ${course.progress}%"></div>
+                    </div>
+                    <div class="course-actions">
+                        <button class="btn-small" onclick="continueCourse('${courseId}')">
+                            <i class="fas fa-play"></i> Continue Learning
+                        </button>
+                        <button class="btn-small" onclick="viewMaterials('${courseId}')">
+                            <i class="fas fa-folder"></i> Materials
+                        </button>
+                        ${course.progress === 100 ? '<button class="btn-small" onclick="downloadCertificate(\'' + courseId + '\')"><i class="fas fa-certificate"></i> Certificate</button>' : ''}
+                    </div>
+                `;
+                coursesContainer.appendChild(courseCard);
+            });
+
+            document.getElementById('totalHours').textContent = totalHours;
+            document.getElementById('certificates').textContent = certificates;
+        });
+
+        function continueCourse(courseId) {
+            alert(`Continuing ${courseData[courseId].name}. Learning portal will be available soon!`);
+        }
+
+        function viewMaterials(courseId) {
+            alert(`Viewing materials for ${courseData[courseId].name}. Materials portal coming soon!`);
+        }
+
+        function downloadCertificate(courseId) {
+            alert(`Downloading certificate for ${courseData[courseId].name}. Certificate will be generated!`);
+        }
+    </script>
+</body>
+</html>

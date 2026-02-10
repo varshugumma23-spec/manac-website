@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - Manac Infotech</title>
+    <link rel="stylesheet" href="enhanced-style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <h1><a href="index.html" style="text-decoration:none;color:inherit;">Manac Infotech</a></h1>
+                    <span>Excellence in IT Education</span>
+                </div>
+                <nav class="nav">
+                    <a href="index.html">Home</a>
+                    <a href="courses.html">Courses</a>
+                    <a href="#" class="active">Projects</a>
+                    <a href="index.html#contact">Contact</a>
+                </nav>
+                <div class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="projects-page">
+        <div class="hero-small">
+            <div class="container">
+                <h1>Student Projects</h1>
+                <p>Real-world projects built by our students during their training</p>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="projects-filter">
+                <button class="filter-btn active" data-filter="all">All Projects</button>
+                <button class="filter-btn" data-filter="java">Java</button>
+                <button class="filter-btn" data-filter="python">Python</button>
+                <button class="filter-btn" data-filter="web">Web Dev</button>
+                <button class="filter-btn" data-filter="mobile">Mobile</button>
+            </div>
+
+            <div class="projects-grid">
+                <div class="project-card" data-category="java">
+                    <div class="project-image">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>E-Commerce Platform</h3>
+                        <p>Full-stack e-commerce application built with Spring Boot, React, and MySQL</p>
+                        <div class="project-tech">
+                            <span>Java</span>
+                            <span>Spring Boot</span>
+                            <span>React</span>
+                            <span>MySQL</span>
+                        </div>
+                        <div class="project-author">By: Rahul Sharma</div>
+                        <div class="project-actions">
+                            <button class="btn-small" onclick="viewProject('ecommerce')">
+                                <i class="fas fa-eye"></i> View
+                            </button>
+                            <button class="btn-small" onclick="downloadProject('ecommerce')">
+                                <i class="fas fa-download"></i> Download
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card" data-category="python">
+                    <div class="project-image">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Stock Price Predictor</h3>
+                        <p>Machine learning model to predict stock prices using historical data and sentiment analysis</p>
+                        <div class="project-tech">
+                            <span>Python</span>
+                            <span>TensorFlow</span>
+                            <span>Pandas</span>
+                            <span>Flask</span>
+                        </div>
+                        <div class="project-author">By: Priya Reddy</div>
+                        <div class="project-actions">
+                            <button class="btn-small" onclick="viewProject('stock-predictor')">
+                                <i class="fas fa-eye"></i> View
+                            </button>
+                            <button class="btn-small" onclick="downloadProject('stock-predictor')">
+                                <i class="fas fa-download"></i> Download
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card" data-category="web">
+                    <div class="project-image">
+                        <i class="fas fa-tasks"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Task Management System</h3>
+                        <p>Collaborative task management application with real-time updates and team collaboration</p>
+                        <div class="project-tech">
+                            <span>React</span>
+                            <span>Node.js</span>
+                            <span>MongoDB</span>
+                            <span>Socket.io</span>
+                        </div>
+                        <div class="project-author">By: Amit Kumar</div>
+                        <div class="project-actions">
+                            <button class="btn-small" onclick="viewProject('task-manager')">
+                                <i class="fas fa-eye"></i> View
+                            </button>
+                            <button class="btn-small" onclick="downloadProject('task-manager')">
+                                <i class="fas fa-download"></i> Download
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card" data-category="java">
+                    <div class="project-image">
+                        <i class="fas fa-hospital"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Hospital Management System</h3>
+                        <p>Complete hospital management solution with patient records, appointments, and billing</p>
+                        <div class="project-tech">
+                            <span>Java</span>
+                            <span>Spring</span>
+                            <span>Hibernate</span>
+                            <span>PostgreSQL</span>
+                        </div>
+                        <div class="project-author">By: Sneha Patel</div>
+                        <div class="project-actions">
+                            <button class="btn-small" onclick="viewProject('hospital-mgmt')">
+                                <i class="fas fa-eye"></i> View
+                            </button>
+                            <button class="btn-small" onclick="downloadProject('hospital-mgmt')">
+                                <i class="fas fa-download"></i> Download
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card" data-category="python">
+                    <div class="project-image">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Sentiment Analysis Tool</h3>
+                        <p>AI-powered tool to analyze sentiment from social media posts and customer reviews</p>
+                        <div class="project-tech">
+                            <span>Python</span>
+                            <span>NLTK</span>
+                            <span>Django</span>
+                            <span>PostgreSQL</span>
+                        </div>
+                        <div class="project-author">By: Vikash Singh</div>
+                        <div class="project-actions">
+                            <button class="btn-small" onclick="viewProject('sentiment-analysis')">
+                                <i class="fas fa-eye"></i> View
+                            </button>
+                            <button class="btn-small" onclick="downloadProject('sentiment-analysis')">
+                                <i class="fas fa-download"></i> Download
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card" data-category="web">
+                    <div class="project-image">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Online Learning Platform</h3>
+                        <p>Educational platform with video streaming, quizzes, and progress tracking</p>
+                        <div class="project-tech">
+                            <span>Vue.js</span>
+                            <span>Express</span>
+                            <span>MongoDB</span>
+                            <span>AWS S3</span>
+                        </div>
+                        <div class="project-author">By: Anita Sharma</div>
+                        <div class="project-actions">
+                            <button class="btn-small" onclick="viewProject('learning-platform')">
+                                <i class="fas fa-eye"></i> View
+                            </button>
+                            <button class="btn-small" onclick="downloadProject('learning-platform')">
+                                <i class="fas fa-download"></i> Download
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Project filtering
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelector('.filter-btn.active').classList.remove('active');
+                btn.classList.add('active');
+                
+                const filter = btn.dataset.filter;
+                document.querySelectorAll('.project-card').forEach(card => {
+                    if (filter === 'all' || card.dataset.category === filter) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        function viewProject(projectId) {
+            alert(`Viewing project: ${projectId}. Demo link will be available soon!`);
+        }
+
+        function downloadProject(projectId) {
+            alert(`Downloading project: ${projectId}. Source code will be available after enrollment!`);
+        }
+    </script>
+</body>
+</html>

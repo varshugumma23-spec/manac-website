@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - Manac Infotech</title>
+    <link rel="stylesheet" href="enhanced-style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <h1><a href="index.html" style="text-decoration:none;color:inherit;">Manac Infotech</a></h1>
+                    <span>Excellence in IT Education</span>
+                </div>
+                <nav class="nav">
+                    <a href="index.html">Home</a>
+                    <a href="profile.html">Profile</a>
+                    <a href="my-courses.html">My Courses</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="settings-page">
+        <div class="container">
+            <div class="page-header">
+                <h1>Settings</h1>
+                <p>Manage your account preferences and privacy settings</p>
+            </div>
+
+            <div class="settings-content">
+                <div class="settings-section">
+                    <h2>Account Settings</h2>
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <h3>Email Notifications</h3>
+                            <p>Receive updates about courses and announcements</p>
+                        </div>
+                        <label class="toggle">
+                            <input type="checkbox" id="emailNotifications" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <h3>SMS Notifications</h3>
+                            <p>Get important updates via SMS</p>
+                        </div>
+                        <label class="toggle">
+                            <input type="checkbox" id="smsNotifications">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <h3>Course Reminders</h3>
+                            <p>Remind me about upcoming classes and deadlines</p>
+                        </div>
+                        <label class="toggle">
+                            <input type="checkbox" id="courseReminders" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="settings-section">
+                    <h2>Privacy Settings</h2>
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <h3>Profile Visibility</h3>
+                            <p>Make your profile visible to other students</p>
+                        </div>
+                        <label class="toggle">
+                            <input type="checkbox" id="profileVisibility">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <h3>Show Progress</h3>
+                            <p>Display your course progress to instructors</p>
+                        </div>
+                        <label class="toggle">
+                            <input type="checkbox" id="showProgress" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="settings-section">
+                    <h2>Learning Preferences</h2>
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <h3>Preferred Learning Time</h3>
+                            <p>When do you prefer to study?</p>
+                        </div>
+                        <select id="learningTime" class="setting-select">
+                            <option value="morning">Morning (6 AM - 12 PM)</option>
+                            <option value="afternoon">Afternoon (12 PM - 6 PM)</option>
+                            <option value="evening">Evening (6 PM - 10 PM)</option>
+                            <option value="night">Night (10 PM - 6 AM)</option>
+                        </select>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <h3>Difficulty Level</h3>
+                            <p>Preferred course difficulty level</p>
+                        </div>
+                        <select id="difficultyLevel" class="setting-select">
+                            <option value="beginner">Beginner</option>
+                            <option value="intermediate">Intermediate</option>
+                            <option value="advanced">Advanced</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="settings-section">
+                    <h2>Security</h2>
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <h3>Change Password</h3>
+                            <p>Update your account password</p>
+                        </div>
+                        <button class="btn btn-secondary" onclick="changePassword()">Change Password</button>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <h3>Two-Factor Authentication</h3>
+                            <p>Add an extra layer of security to your account</p>
+                        </div>
+                        <button class="btn btn-secondary" onclick="setup2FA()">Setup 2FA</button>
+                    </div>
+                </div>
+
+                <div class="settings-section danger-zone">
+                    <h2>Danger Zone</h2>
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <h3>Delete Account</h3>
+                            <p>Permanently delete your account and all data</p>
+                        </div>
+                        <button class="btn btn-danger" onclick="deleteAccount()">Delete Account</button>
+                    </div>
+                </div>
+
+                <div class="settings-actions">
+                    <button class="btn btn-primary" onclick="saveSettings()">Save Changes</button>
+                    <button class="btn btn-secondary" onclick="resetSettings()">Reset to Default</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Load saved settings
+        window.addEventListener('load', () => {
+            const settings = JSON.parse(localStorage.getItem('userSettings') || '{}');
+            
+            // Apply saved settings
+            Object.keys(settings).forEach(key => {
+                const element = document.getElementById(key);
+                if (element) {
+                    if (element.type === 'checkbox') {
+                        element.checked = settings[key];
+                    } else {
+                        element.value = settings[key];
+                    }
+                }
+            });
+        });
+
+        function saveSettings() {
+            const settings = {
+                emailNotifications: document.getElementById('emailNotifications').checked,
+                smsNotifications: document.getElementById('smsNotifications').checked,
+                courseReminders: document.getElementById('courseReminders').checked,
+                profileVisibility: document.getElementById('profileVisibility').checked,
+                showProgress: document.getElementById('showProgress').checked,
+                learningTime: document.getElementById('learningTime').value,
+                difficultyLevel: document.getElementById('difficultyLevel').value
+            };
+            
+            localStorage.setItem('userSettings', JSON.stringify(settings));
+            alert('Settings saved successfully!');
+        }
+
+        function resetSettings() {
+            if (confirm('Are you sure you want to reset all settings to default?')) {
+                localStorage.removeItem('userSettings');
+                location.reload();
+            }
+        }
+
+        function changePassword() {
+            const newPassword = prompt('Enter new password:');
+            if (newPassword) {
+                alert('Password changed successfully!');
+            }
+        }
+
+        function setup2FA() {
+            alert('Two-Factor Authentication setup will be available soon!');
+        }
+
+        function deleteAccount() {
+            if (confirm('Are you sure you want to delete your account? This action cannot be undone.')) {
+                if (confirm('This will permanently delete all your data. Are you absolutely sure?')) {
+                    localStorage.clear();
+                    alert('Account deleted successfully!');
+                    window.location.href = 'index.html';
+                }
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Courses - Manac Infotech</title>
+    <link rel="stylesheet" href="enhanced-style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <h1><a href="index.html" style="text-decoration:none;color:inherit;">Manac Infotech</a></h1>
+                    <span>Excellence in IT Education</span>
+                </div>
+                <nav class="nav">
+                    <a href="index.html">Home</a>
+                    <a href="#" class="active">Courses</a>
+                    <a href="projects.html">Projects</a>
+                    <a href="index.html#contact">Contact</a>
+                </nav>
+                <div class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="courses-page">
+        <div class="hero-small">
+            <div class="container">
+                <h1>Our Training Programs</h1>
+                <p>Industry-focused courses designed for career success</p>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="courses-filter">
+                <button class="filter-btn active" data-filter="all">All Courses</button>
+                <button class="filter-btn" data-filter="programming">Programming</button>
+                <button class="filter-btn" data-filter="data">Data Science</button>
+                <button class="filter-btn" data-filter="cloud">Cloud</button>
+                <button class="filter-btn" data-filter="testing">Testing</button>
+            </div>
+
+            <div class="courses-detailed-grid">
+                <div class="course-detailed-card" data-category="programming">
+                    <div class="course-image">
+                        <i class="fab fa-java"></i>
+                    </div>
+                    <div class="course-content">
+                        <h3>Java Full Stack Development</h3>
+                        <p>Master Java programming with Spring Boot, Microservices, React, and modern development practices.</p>
+                        <div class="course-details">
+                            <span><i class="fas fa-clock"></i> 6 Months</span>
+                            <span><i class="fas fa-users"></i> 25 Students</span>
+                            <span><i class="fas fa-star"></i> 4.8/5</span>
+                        </div>
+                        <div class="course-price">₹45,000</div>
+                        <button class="btn btn-primary" onclick="enrollCourse('java')">Enroll Now</button>
+                    </div>
+                </div>
+
+                <div class="course-detailed-card" data-category="data">
+                    <div class="course-image">
+                        <i class="fab fa-python"></i>
+                    </div>
+                    <div class="course-content">
+                        <h3>Python & Data Science</h3>
+                        <p>Learn Python programming, Django, Flask, Machine Learning, and Data Analytics with real projects.</p>
+                        <div class="course-details">
+                            <span><i class="fas fa-clock"></i> 5 Months</span>
+                            <span><i class="fas fa-users"></i> 30 Students</span>
+                            <span><i class="fas fa-star"></i> 4.9/5</span>
+                        </div>
+                        <div class="course-price">₹40,000</div>
+                        <button class="btn btn-primary" onclick="enrollCourse('python')">Enroll Now</button>
+                    </div>
+                </div>
+
+                <div class="course-detailed-card" data-category="programming">
+                    <div class="course-image">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <div class="course-content">
+                        <h3>Web Development (MERN)</h3>
+                        <p>Complete web development with HTML5, CSS3, JavaScript, React, Node.js, and MongoDB.</p>
+                        <div class="course-details">
+                            <span><i class="fas fa-clock"></i> 4 Months</span>
+                            <span><i class="fas fa-users"></i> 35 Students</span>
+                            <span><i class="fas fa-star"></i> 4.7/5</span>
+                        </div>
+                        <div class="course-price">₹35,000</div>
+                        <button class="btn btn-primary" onclick="enrollCourse('web')">Enroll Now</button>
+                    </div>
+                </div>
+
+                <div class="course-detailed-card" data-category="cloud">
+                    <div class="course-image">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                    <div class="course-content">
+                        <h3>Cloud Computing (AWS)</h3>
+                        <p>Master AWS services, DevOps, Docker, Kubernetes, and cloud architecture patterns.</p>
+                        <div class="course-details">
+                            <span><i class="fas fa-clock"></i> 3 Months</span>
+                            <span><i class="fas fa-users"></i> 20 Students</span>
+                            <span><i class="fas fa-star"></i> 4.8/5</span>
+                        </div>
+                        <div class="course-price">₹50,000</div>
+                        <button class="btn btn-primary" onclick="enrollCourse('cloud')">Enroll Now</button>
+                    </div>
+                </div>
+
+                <div class="course-detailed-card" data-category="testing">
+                    <div class="course-image">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="course-content">
+                        <h3>Automation Testing</h3>
+                        <p>Learn Selenium, TestNG, Cucumber, API testing, and modern test automation frameworks.</p>
+                        <div class="course-details">
+                            <span><i class="fas fa-clock"></i> 3 Months</span>
+                            <span><i class="fas fa-users"></i> 15 Students</span>
+                            <span><i class="fas fa-star"></i> 4.6/5</span>
+                        </div>
+                        <div class="course-price">₹30,000</div>
+                        <button class="btn btn-primary" onclick="enrollCourse('testing')">Enroll Now</button>
+                    </div>
+                </div>
+
+                <div class="course-detailed-card" data-category="data">
+                    <div class="course-image">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <div class="course-content">
+                        <h3>Power BI & Analytics</h3>
+                        <p>Master Business Intelligence, Data Visualization, and Advanced Analytics with Power BI.</p>
+                        <div class="course-details">
+                            <span><i class="fas fa-clock"></i> 2 Months</span>
+                            <span><i class="fas fa-users"></i> 25 Students</span>
+                            <span><i class="fas fa-star"></i> 4.5/5</span>
+                        </div>
+                        <div class="course-price">₹25,000</div>
+                        <button class="btn btn-primary" onclick="enrollCourse('powerbi')">Enroll Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Course filtering
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelector('.filter-btn.active').classList.remove('active');
+                btn.classList.add('active');
+                
+                const filter = btn.dataset.filter;
+                document.querySelectorAll('.course-detailed-card').forEach(card => {
+                    if (filter === 'all' || card.dataset.category === filter) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Enroll in course
+        function enrollCourse(courseId) {
+            const user = localStorage.getItem('manacUser');
+            if (!user) {
+                alert('Please login to enroll in courses');
+                window.location.href = 'login.html';
+                return;
+            }
+            
+            let enrolledCourses = JSON.parse(localStorage.getItem('enrolledCourses') || '[]');
+            if (!enrolledCourses.includes(courseId)) {
+                enrolledCourses.push(courseId);
+                localStorage.setItem('enrolledCourses', JSON.stringify(enrolledCourses));
+                alert('Successfully enrolled in the course!');
+            } else {
+                alert('You are already enrolled in this course!');
+            }
+        }
+    </script>
+</body>
+</html>
